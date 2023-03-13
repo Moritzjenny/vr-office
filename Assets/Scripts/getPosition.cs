@@ -12,7 +12,7 @@ public class getPosition : MonoBehaviour
 {
 
     private float nextActionTime = 0.0f;
-    public float period = 0.5f;
+    public float period = 1f;
 
     void Start()
     {
