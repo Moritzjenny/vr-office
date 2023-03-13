@@ -13,6 +13,7 @@ public class getPosition : MonoBehaviour
 
     private float nextActionTime = 0.0f;
     public float period = 1f;
+    public RotateWindow rotateWindow;
 
     void Start()
     {
@@ -56,6 +57,7 @@ public class getPosition : MonoBehaviour
                     string str = webRequest.downloadHandler.text;
                     int freq = str.Count(f => (f == '{'));
                     print(freq / 25 + 1);
+                    rotateWindow.RotateToCardinalDirection(freq / 25 + 1, 1);
                     break;
             }
         }
