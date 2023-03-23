@@ -15,7 +15,7 @@ public class RestService : MonoBehaviour
     public MockEndpoint mockEndpoint;
     public bool mock;
 
-    private string latestJson = "";
+    public string latestJson = "";
     private string latestJsonOld = "";
 
 
@@ -27,23 +27,20 @@ public class RestService : MonoBehaviour
         }
     }
 
-    public string GetJson()
+    public void GetJson()
     {
         // A correct website page.
-        StartCoroutine(GetRequest("https://63e11f4b59bb472a7431470f.mockapi.io/position", result =>
-        {
-            latestJson = result;
-        }));
-        return latestJson;
+        StartCoroutine(GetRequest("http://127.0.0.1:5000/directionFile/"));
     }
 
 
-    IEnumerator GetRequest(string uri, Action<string> callback)
+    IEnumerator GetRequest(string uri)
     {
         if (!mock)
         {
             using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))
             {
+
                 // Request and wait for the desired page.
                 yield return webRequest.SendWebRequest();
 
@@ -62,14 +59,14 @@ public class RestService : MonoBehaviour
                         break;
                     case UnityWebRequest.Result.Success:
                         string str = webRequest.downloadHandler.text;
+                        latestJson = str;
                         break;
                 }
-                callback("str");
             }
         }
         else
         {
-            callback(mockEndpoint.GetData());
+            //TODO
         }
 
     }

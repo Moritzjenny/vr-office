@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class RayOrientation : MonoBehaviour
 {
-    public Vector3 rayDirection;
     public float rayDistance = 10f;
     public Color rayColor = Color.red;
 
@@ -14,7 +13,7 @@ public class RayOrientation : MonoBehaviour
     public RestService restService;
 
     private SoundList soundList;
-    private Vector3 direction;
+    public Vector3 direction;
 
 
     void Update()
@@ -23,14 +22,15 @@ public class RayOrientation : MonoBehaviour
         if (Time.time > nextActionTime)
         {
             nextActionTime += period;
+            restService.GetJson();
+            string j = restService.latestJson;
 
-            string j = restService.GetJson();
+            print("asodjaoiwdjoawdji");
+            print(j);
             soundList = JsonUtility.FromJson<SoundList>(j);
             direction.x = soundList.sounds[0].direction.x;
             direction.y = soundList.sounds[0].direction.y;
             direction.z = soundList.sounds[0].direction.z;
-
-            print(j);
         }
 
 
