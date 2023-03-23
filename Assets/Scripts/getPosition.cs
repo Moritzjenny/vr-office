@@ -56,7 +56,6 @@ public class getPosition : MonoBehaviour
                 case UnityWebRequest.Result.Success:
                     string str = webRequest.downloadHandler.text;
                     int freq = str.Count(f => (f == '{'));
-                    print(freq / 25 + 1);
                     rotateWindow.RotateToCardinalDirection(freq / 25 + 1, 1);
                     break;
             }
