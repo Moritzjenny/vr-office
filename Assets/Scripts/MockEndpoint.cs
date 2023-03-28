@@ -7,7 +7,7 @@ public class MockEndpoint : MonoBehaviour
 {
     private static MockEndpoint _instance;
 
-    public SoundList soundList = new SoundList();
+    public SoundList soundList;
     private string json;
 
 
@@ -29,15 +29,11 @@ public class MockEndpoint : MonoBehaviour
         _instance = this;
     }
 
-    void Start()
-    {
-        json = JsonUtility.ToJson(soundList);
-    }
-
     // Add other class methods here...
 
     public string GetData()
     {
+        json = JsonUtility.ToJson(soundList);
         return json;
     }
 }

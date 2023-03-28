@@ -23,14 +23,15 @@ public class RayOrientation : MonoBehaviour
         {
             nextActionTime += period;
             restService.GetJson();
-            string j = restService.latestJson;
 
-            print("asodjaoiwdjoawdji");
-            print(j);
-            soundList = JsonUtility.FromJson<SoundList>(j);
-            direction.x = soundList.sounds[0].direction.x;
-            direction.y = soundList.sounds[0].direction.y;
-            direction.z = soundList.sounds[0].direction.z;
+            string j = restService.latestJson;
+            if (j != "")
+            {
+                soundList = JsonUtility.FromJson<SoundList>(j);
+                direction.x = soundList.sounds[0].direction.x;
+                direction.y = soundList.sounds[0].direction.y;
+                direction.z = soundList.sounds[0].direction.z;
+            }
         }
 
 

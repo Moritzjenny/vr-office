@@ -28,7 +28,7 @@ public class getPosition : MonoBehaviour
             nextActionTime += period;
 
             // A correct website page.
-            StartCoroutine(GetRequest("https://63e11f4b59bb472a7431470f.mockapi.io/position"));
+            // StartCoroutine(GetRequest("https://63e11f4b59bb472a7431470f.mockapi.io/position"));
         }
     }
 

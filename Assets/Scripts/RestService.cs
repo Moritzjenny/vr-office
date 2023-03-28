@@ -30,7 +30,7 @@ public class RestService : MonoBehaviour
     public void GetJson()
     {
         // A correct website page.
-        StartCoroutine(GetRequest("http://127.0.0.1:5000/directionFile/"));
+        StartCoroutine(GetRequest(url));
     }
 
 
@@ -66,7 +66,7 @@ public class RestService : MonoBehaviour
         }
         else
         {
-            //TODO
+            latestJson = mockEndpoint.GetData();
         }
 
     }
