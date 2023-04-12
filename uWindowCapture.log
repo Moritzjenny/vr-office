@@ -1,4 +1,1 @@
-[uWC::Log][2023-03-29 19:41:49] Start
-[uWC::Err][2023-03-29 19:41:51] WindowTexture::RecreateSharedTextureIfNeeded => GetSharedHandle() failed.
-[uWC::Err][2023-03-29 19:41:51] WindowTexture::RecreateSharedTextureIfNeeded => GetSharedHandle() failed.
-[uWC::Log][2023-03-29 19:42:16] Stop
+[uWC::Log][2023-04-12 20:36:37] Start
