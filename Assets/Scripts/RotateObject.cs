@@ -18,6 +18,14 @@ public class RotateObject : MonoBehaviour
     void Update()
     {
         directionVector = rayOrientation.direction;
+        if (directionVector == new Vector3(0, 0, 0))
+        {
+            objectToRotate.gameObject.SetActive(false);
+        }
+        else
+        {
+            objectToRotate.gameObject.SetActive(true);
+        }
         // Project direction vector onto horizontal plane
         Vector3 projectedVector = new Vector3(-directionVector.x, 0f, -directionVector.z);
         projectedVector.Normalize(); // normalize the vector to get a unit vector
