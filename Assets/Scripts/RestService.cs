@@ -12,11 +12,15 @@ public class RestService : MonoBehaviour
     public float period = 1f;
 
     public string url;
+    public string cameraurl;
     public MockEndpoint mockEndpoint;
     public bool mock;
 
     public string latestJson = "";
     private string latestJsonOld = "";
+
+    public string latestCameraJson = "";
+    private string latestCameraJsonOld = "";
 
 
     void Update()
@@ -25,16 +29,21 @@ public class RestService : MonoBehaviour
         {
             latestJsonOld = latestJson;
         }
+
+        if (latestCameraJson != latestCameraJsonOld)
+        {
+            latestCameraJsonOld = latestCameraJson;
+        }
     }
 
     public void GetJson()
     {
         // A correct website page.
-        StartCoroutine(GetRequest(url));
+        StartCoroutine(GetRequest(url, cameraurl));
     }
 
 
-    IEnumerator GetRequest(string uri)
+    IEnumerator GetRequest(string uri, string camerauri)
     {
         if (!mock)
         {
@@ -63,10 +72,37 @@ public class RestService : MonoBehaviour
                         break;
                 }
             }
+            using (UnityWebRequest webRequest = UnityWebRequest.Get(camerauri))
+            {
+
+                // Request and wait for the desired page.
+                yield return webRequest.SendWebRequest();
+
+                string[] pages = camerauri.Split('/');
+                int page = pages.Length - 1;
+
+                // This code is very embarrassing, however its also just to play around
+                switch (webRequest.result)
+                {
+                    case UnityWebRequest.Result.ConnectionError:
+                    case UnityWebRequest.Result.DataProcessingError:
+                        Debug.LogError(pages[page] + ": Error: " + webRequest.error);
+                        break;
+                    case UnityWebRequest.Result.ProtocolError:
+                        Debug.LogError(pages[page] + ": HTTP Error: " + webRequest.error);
+                        break;
+                    case UnityWebRequest.Result.Success:
+                        string str = webRequest.downloadHandler.text;
+                        latestCameraJson = str;
+                        break;
+                }
+            }
         }
         else
         {
             latestJson = mockEndpoint.GetData();
+            latestCameraJson = mockEndpoint.GetCameraData();
+
         }
 
     }

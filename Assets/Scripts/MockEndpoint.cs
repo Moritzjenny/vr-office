@@ -8,6 +8,7 @@ public class MockEndpoint : MonoBehaviour
     private static MockEndpoint _instance;
 
     public SoundList soundList;
+    public Content content;
     private string json;
 
 
@@ -34,6 +35,13 @@ public class MockEndpoint : MonoBehaviour
     public string GetData()
     {
         json = JsonUtility.ToJson(soundList);
+        return json;
+    }
+
+
+    public string GetCameraData()
+    {
+        json = JsonUtility.ToJson(content);
         return json;
     }
 }
