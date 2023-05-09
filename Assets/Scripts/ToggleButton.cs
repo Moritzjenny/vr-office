@@ -29,7 +29,6 @@ public class ToggleButton : MonoBehaviour
 
     public void ToggleToggleButton()
     {
-        print("aouwdhawoiudhja0");
         isToggled = !isToggled;
         toggleButton2.SetActive(isToggled);
         toggleButton1.SetActive(!isToggled);
