@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Center : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class Center : MonoBehaviour
     private Vector3 eyePos;
     private Quaternion eyeRot;
     private Quaternion initRot;
+    public UnityEvent onCenterScene;
 
     // Start is called before the first frame update
     void Start()
@@ -30,5 +32,6 @@ public class Center : MonoBehaviour
         eyeRot = eyeTransform.rotation;
         structureTransform.position = initPos + eyePos;
         structureTransform.rotation = new Quaternion(0, eyeTransform.rotation.y, 0, eyeTransform.rotation.w);
+        onCenterScene.Invoke();
     }
 }
