@@ -7482,7 +7482,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   period: 0.1
   url: http://127.0.0.1:5000/directionFile/
-  cameraurl: http://127.0.0.1:5000/camera/
+  cameraurl: http://127.0.0.1:5000/objectsFile/
   mockEndpoint: {fileID: 274212074}
   mock: 1
   latestJson: 
