@@ -2359,8 +2359,8 @@ MonoBehaviour:
   soundList:
     sounds:
     - direction:
-        x: 0.66
-        y: 0.66
+        x: 0
+        y: -1
         z: 0.66
       type: VOICE
   content:
@@ -7484,7 +7484,7 @@ MonoBehaviour:
   url: http://127.0.0.1:5000/directionFile/
   cameraurl: http://127.0.0.1:5000/objectsFile/
   mockEndpoint: {fileID: 274212074}
-  mock: 1
+  mock: 0
   latestJson: 
   latestCameraJson: 
 --- !u!114 &830570332
@@ -7502,7 +7502,7 @@ MonoBehaviour:
   objectToRotate: {fileID: 2088606263}
   rayOrientation: {fileID: 830570329}
   disappearAppear: {fileID: 1680919230}
-  rotationSpeed: 30
+  rotationSpeed: 0
 --- !u!1001 &842592374
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14874,7 +14874,15 @@ PrefabInstance:
       value: -0.45215714
       objectReference: {fileID: 0}
     - target: {fileID: 7192818547680544906, guid: f39a9d103c4129b42a53567f6cd8356a, type: 3}
+      propertyPath: enableMixedReality
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7192818547680544906, guid: f39a9d103c4129b42a53567f6cd8356a, type: 3}
       propertyPath: isInsightPassthroughEnabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7192818547680544906, guid: f39a9d103c4129b42a53567f6cd8356a, type: 3}
+      propertyPath: expandMixedRealityCapturePropertySheet
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7192818547689909906, guid: f39a9d103c4129b42a53567f6cd8356a, type: 3}
@@ -16495,7 +16503,7 @@ MonoBehaviour:
   colorMapEditorPosterize: 0
   colorMapEditorSaturation: 0
   serializedSurfaceGeometry: []
-  textureOpacity_: 1
+  textureOpacity_: 0.574
   edgeRenderingEnabled_: 0
   edgeColor_: {r: 1, g: 1, b: 1, a: 1}
   colorMapType: 0

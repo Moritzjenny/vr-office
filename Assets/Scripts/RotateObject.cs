@@ -9,13 +9,15 @@ public class RotateObject : MonoBehaviour
     public RayOrientation rayOrientation;
     public DisappearAppear disappearAppear;
 
-    public float rotationSpeed = 1.0f; // rotation speed in degrees per second
+    private float rotationSpeed = 30.0f; // rotation speed in degrees per second
+    private float currentRotationSpeed; // the current rotation speed
 
     private bool wasDirectionZero;
 
     void Start()
     {
         wasDirectionZero = false;
+        currentRotationSpeed = rotationSpeed;
     }
 
     void Update()
@@ -44,11 +46,27 @@ public class RotateObject : MonoBehaviour
                 // Calculate angle between projected direction vector and object's current forward direction
                 float angle = Vector3.SignedAngle(objectToRotate.forward, projectedVector, Vector3.up);
 
+                // If the angle is larger than 90 degrees, increase rotation speed
+                if (Mathf.Abs(angle) > 90.0f)
+                {
+                    currentRotationSpeed = rotationSpeed * 10;
+                    StartCoroutine(ResetRotationSpeed());
+                }
+
                 // Rotate the object towards the projected direction vector
-                objectToRotate.rotation = Quaternion.RotateTowards(objectToRotate.rotation, Quaternion.LookRotation(projectedVector), Time.deltaTime * rotationSpeed);
+                objectToRotate.rotation = Quaternion.RotateTowards(objectToRotate.rotation, Quaternion.LookRotation(projectedVector), Time.deltaTime * currentRotationSpeed);
 
                 //Debug.DrawRay(transform.position, projectedVector * 10, Color.green);
             }
         }
+    }
+
+    IEnumerator ResetRotationSpeed()
+    {
+        // Wait for 1 second
+        yield return new WaitForSeconds(0.5f);
+
+        // Reset the rotation speed back to normal
+        currentRotationSpeed = rotationSpeed;
     }
 }
